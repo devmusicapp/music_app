@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-中身
+メンバー募集
 </div>
 @endsection

@@ -42,10 +42,10 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="">記事を探す</a>
+                                <a class="nav-link" href="{{route('recruiting.index')}}">記事を探す</a>
                             </li>                            
                             <li class="nav-item">
-                                <a class="nav-link" href="">メンバーを探す</a>
+                                <a class="nav-link" href="{{route('member.index')}}">メンバーを探す</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">サポート</a>
