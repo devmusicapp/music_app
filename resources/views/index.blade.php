@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-aaaa
+music app
 </div>
 @endsection
