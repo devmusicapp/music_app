@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 //top ページ
 Route::get('/', function () {
     return view('index');
-});
+})->name('top');
 
 //メンバー募集
 Route::get('/member', function () {
