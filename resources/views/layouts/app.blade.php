@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="{{route('member.index')}}">メンバーを探す</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">サポート</a>
+                                <a class="nav-link" href="#">サポート</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">ログイン</a>
