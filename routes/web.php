@@ -26,3 +26,7 @@ Route::get('/recruiting', function () {
     return view('recruiting.index');
 })->name('recruiting.index');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
