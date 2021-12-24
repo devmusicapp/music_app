@@ -27,6 +27,7 @@ Route::get('/recruiting', function () {
 })->name('recruiting.index');
 
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
