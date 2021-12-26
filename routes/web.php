@@ -26,8 +26,7 @@ Route::get('/recruiting', function () {
     return view('recruiting.index');
 })->name('recruiting.index');
 
-
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('posts', 'PostsController', ['only' => ['index', 'create', 'store', 'show']]);
+
