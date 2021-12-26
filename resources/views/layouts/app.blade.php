@@ -39,10 +39,10 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('recruiting.index')}}">記事を探す</a>
+                                <a class="nav-link" href="{{route('recruiting.index')}}">検索</a>
                             </li>                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('member.index')}}">メンバーを探す</a>
+                                <a class="nav-link" href="{{route('posts.create')}}">投稿</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">サポート</a>
@@ -99,13 +99,13 @@
                 <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">記事を探す</h5>
+                    <h5 class="text-uppercase">検索</h5>
                 </div>
                 <!--Grid column-->
         
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-0">メンバーを探す</h5>
+                    <h5 class="text-uppercase mb-0">投稿</h5>
                 </div>
                 <!--Grid column-->
         
