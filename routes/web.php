@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //top ページ
-Route::get('/', function () {
-    return view('index');
-})->name('top');
+Route::get('/', 'PostsController@index')->name('top');
 
 //メンバー募集
 Route::get('/member', function () {
@@ -28,5 +26,5 @@ Route::get('/recruiting', function () {
 
 Auth::routes();
 
-Route::resource('posts', 'PostsController', ['only' => ['index', 'create', 'store', 'show']]);
+Route::resource('posts', 'PostsController', ['only' => ['create', 'store', 'show']]);
 
