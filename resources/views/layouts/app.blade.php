@@ -43,7 +43,7 @@
                             </li>                            
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">サポート</a>
+                                <a class="nav-link" href="{{ route('cash_test1') }}">決済テスト</a>
                             </li>
                             @guest
                             <li class="nav-item">
@@ -103,7 +103,7 @@
         
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">サポート</h5>
+                    <h5 class="text-uppercase">決済テスト</h5>
                 </div>
                 <!--Grid column-->
         

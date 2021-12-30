@@ -31,7 +31,7 @@ Route::resource('posts', 'PostsController', ['only' => ['create', 'store', 'show
 Route::prefix('user')->middleware(['auth'])->group(function() {
 
     // 課金
-    Route::get('subscription', 'User\SubscriptionController@index');
+    Route::get('subscription', 'User\SubscriptionController@index')->name('cash_test1');
     Route::get('ajax/subscription/status', 'User\Ajax\SubscriptionController@status');
     Route::post('ajax/subscription/subscribe', 'User\Ajax\SubscriptionController@subscribe');
     Route::post('ajax/subscription/cancel', 'User\Ajax\SubscriptionController@cancel');
