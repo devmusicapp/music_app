@@ -45,6 +45,24 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('cash_test1') }}">決済テスト</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
+                            </li>
+                            @auth
+                                @if(Auth::user()->is_Artist == 0 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.create') }}">アーティスト情報入力</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->is_Artist == 1 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.edit',Auth::user()->id) }}">アーティスト情報編集</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストプロフィール</a>
+                                </li>
+                                @endif
+                            @endauth
                             @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">ログイン</a>

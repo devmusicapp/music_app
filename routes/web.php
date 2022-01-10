@@ -40,3 +40,15 @@ Route::prefix('user')->middleware(['auth'])->group(function() {
     Route::post('ajax/subscription/update_card', 'User\Ajax\SubscriptionController@update_card');
 
 });
+
+
+Route::get('/recruiting', function () {
+    return view('recruiting.index');
+})->name('recruiting.index');
+
+//ユーザ画面サンプル
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+Route::resource('artists', 'ArtistsController')->middleware(['auth']);
