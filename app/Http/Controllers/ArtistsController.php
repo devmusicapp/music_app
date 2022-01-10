@@ -45,6 +45,11 @@ class ArtistsController extends Controller
      */
     public function store(Request $request)
     {
+        if($this->isYoutubeURL($request->youtube_url) == 0){
+            //$changed_url = $this->convertYoutube($request->youtube_url);
+            $request->merge(['youtube_url' => null]);
+        }
+
         $params = $request->validate([
             'name' => 'required|string',
             'part' => 'nullable',
@@ -57,11 +62,6 @@ class ArtistsController extends Controller
             'user_id' => 'required|integer',
         ]);
 
-        if($this->isYoutubeURL($params -> youtube_url ) == true){
-            $params -> youtube_url = $this->convertYoutube($params -> youtube_url);
-        }else{
-            $params -> youtube_url = null;
-        }
 
         $artist = Artist::create($params);
         //user テーブルのisArtistをfalse→trueに更新する
