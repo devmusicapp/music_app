@@ -83,6 +83,8 @@ class ArtistsController extends Controller
 
         if($this->isYoutubeURL($artist -> youtube_url ) == true){
             $youtube_url = $this->convertYoutube($artist -> youtube_url);
+        }elseif($this->isYoutubeMobileURL($artist -> youtube_url ) == true){
+            $youtube_url = $this->convertMobileYoutube($artist -> youtube_url);
         }else{
             $youtube_url = null;
         }
@@ -121,6 +123,8 @@ class ArtistsController extends Controller
         
         if($this->isYoutubeURL($request->youtube_url) == 1){
             //$changed_url = $this->convertYoutube($request->youtube_url);
+            $request->merge(['youtube_url' => $request->youtube_url]);
+        }elseif($this->isYoutubeMobileURL($request->youtube_url) == 1){
             $request->merge(['youtube_url' => $request->youtube_url]);
         }else{
             $request->merge(['youtube_url' => null]);
@@ -183,7 +187,14 @@ class ArtistsController extends Controller
         }
         return $isYoutubeURL;
     }
-
+    private function isYoutubeMobileURL($str){
+        $isYoutubeMobileURL = false;
+        if(substr($str, 0, 17)==="https://youtu.be/"){
+            $isYoutubeMobileURL = True;
+        }
+        return $isYoutubeMobileURL;
+    }
+    
     //Youtubeの短縮URLをiframe用の埋め込みURLに変換する
     private function convertYoutube($str, $width = 560, $height = 315) {
         //先頭のアドレスを除外する
@@ -195,5 +206,13 @@ class ArtistsController extends Controller
         return $return_ad;
         }
 
-
+        private function convertMobileYoutube($str, $width = 560, $height = 315) {
+            //先頭のアドレスを除外する
+            $str = str_replace("https://youtu.be/","",$str);
+        
+            //iframe用のアドレスに変換する
+            $return_ad = '<iframe width="'.$width.'" height="'.$height.'" src="https://www.youtube.com/embed/'.$str.'" frameborder="0" allowfullscreen></iframe>';
+        
+            return $return_ad;
+            }
 }
