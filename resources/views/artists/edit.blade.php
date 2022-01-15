@@ -6,6 +6,7 @@
 <form method="POST" action="{{ route('artists.update',['artist' => $artist]) }}">
     @csrf
     @method('PUT')
+    {{ $artist->part }}
 
     <fieldset class="mb-4">
         <div class="form-group">
@@ -25,37 +26,43 @@
             <label for="body">
                 担当パート
             </label>
-            <input
-                id="part"
-                name="part"
-                class="form-control"
-                value="{{ $artist->part }}"
-                type="text"
-            >
+            <select id="part" name="part" class="form-control" value="" type="text">
+                @foreach(config('const.part') as $key => $score)
+                    @if ($artist->part === $key)
+                    <option value="{{ $key }}" selected>{{ $score }}</option>
+                    @else
+                    <option value="{{ $key }}">{{ $score }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="body">
                 活動拠点
             </label>
-            <input
-                id="place"
-                name="place"
-                class="form-control"
-                value="{{ $artist->place }}"
-                type="text"
-            >
+            <select id="place" name="place" class="form-control" value="" type="text">
+                @foreach(config('const.place') as $key => $score)
+                    @if ($artist->part === $key)
+                    <option value="{{ $key }}" selected>{{ $score }}</option>
+                    @else
+                    <option value="{{ $key }}">{{ $score }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="body">
                 性別
             </label>
-            <input
-                id="gender"
-                name="gender"
-                class="form-control"
-                value="{{ $artist->gender }}"
-                type="text"
-            >
+            <select id="gender" name="gender" class="form-control" value="" type="text">
+                @foreach(config('const.gender') as $key => $score)
+                    @if ($artist->part === $key)
+                    <option value="{{ $key }}" selected>{{ $score }}</option>
+                    @else
+                    <option value="{{ $key }}">{{ $score }}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="body">

@@ -10,8 +10,12 @@
                 </div>
                 <br>
               <div class=" p-4  flex-column position-static">
+                @if(  $artist -> user_id == Auth::user()->id )
+                  <a type="button" class="btn btn-primary" href="{{ route('artists.edit',$artist -> user_id) }}">編集する</a>
+                @else
                 <button type="button" class="btn btn-primary">連絡する</button>
                 <button type="button" class="btn btn-primary">依頼する</button>
+                @endif
               </div>
             </div>
           </div>
@@ -24,15 +28,15 @@
               </tr>
               <tr>
                 <th scope="row">担当パート</th>
-                <td>{{ $artist->part }}</td>
+                <td>{{ config('const.part')[$artist->part] }}</td>
               </tr>
               <tr>
                 <th scope="row">活動拠点</th>
-                <td colspan="2">{{ $artist->place }}</td>
+                <td colspan="2">{{ config('const.place')[$artist->place] }}</td>
               </tr>
               <tr>
                 <th scope="row">年齢/性別</th>
-                <td colspan="2">{{ $artist->age }}/{{ $artist->gender }}</td>
+                <td colspan="2">{{ $artist->age }}歳/{{ config('const.gender')[$artist->gender] }}</td>
               </tr> 
               <tr>
                 <th scope="row">好きなアーティスト</th>
@@ -40,7 +44,7 @@
               </tr>
               <tr>
                 <th scope="row">自己PR</th>
-                <td colspan="2">精米した白米の表面には、通常の精米装置では取り切れない肌ヌカ（精白米の表面に残っている粘着性の高いヌカ）が残っています。この肌ヌカを取り除くために、精米した白米を炊く前は研ぎ洗いが必要となります。</td>
+                <td colspan="2">{{ $artist->self_pr }}</td>
               </tr>   
             </tbody>
           </table>

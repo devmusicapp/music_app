@@ -23,37 +23,30 @@
             <label for="body">
                 担当パート
             </label>
-            <input
-                id="part"
-                name="part"
-                class="form-control"
-                value=""
-                type="text"
-            >
-        </div>
+            <select id="part" name="part" class="form-control" value="" type="text">
+                @foreach(config('const.part') as $key => $score)
+                <option value="{{ $key }}">{{ $score }}</option>
+                @endforeach
+            </select>
         <div class="form-group">
             <label for="body">
                 活動拠点
             </label>
-            <input
-                id="place"
-                name="place"
-                class="form-control"
-                value=""
-                type="text"
-            >
+            <select id="place" name="place" class="form-control" value="" type="text">
+                @foreach(config('const.place') as $key => $score)
+                <option value="{{ $key }}">{{ $score }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="body">
                 性別
             </label>
-            <input
-                id="gender"
-                name="gender"
-                class="form-control"
-                value=""
-                type="text"
-            >
+            <select id="gender" name="gender" class="form-control" value="" type="text">
+                @foreach(config('const.gender') as $key => $score)
+                <option value="{{ $key }}">{{ $score }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="body">
@@ -89,7 +82,7 @@
                 class="form-control"
                 value=""
                 type="text"
-            >   
+            >
         </div>
         <div class="form-group">
             <label for="body">
