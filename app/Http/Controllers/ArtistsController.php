@@ -149,7 +149,7 @@ class ArtistsController extends Controller
         $artist = Artist::find($id);
         $artist->fill($params)->save();
 
-        return redirect()->route('top');
+        return redirect()->route('artists.show',$id);
     }
 
     /**
@@ -194,7 +194,7 @@ class ArtistsController extends Controller
         }
         return $isYoutubeMobileURL;
     }
-    
+
     //Youtubeの短縮URLをiframe用の埋め込みURLに変換する
     private function convertYoutube($str, $width = 560, $height = 315) {
         //先頭のアドレスを除外する
