@@ -28,7 +28,7 @@
             </label>
             <select id="part" name="part" class="form-control" value="" type="text">
                 @foreach(config('const.part') as $key => $score)
-                    @if ($artist->part === $key)
+                    @if ($artist->part == $key)
                     <option value="{{ $key }}" selected>{{ $score }}</option>
                     @else
                     <option value="{{ $key }}">{{ $score }}</option>
@@ -42,7 +42,7 @@
             </label>
             <select id="place" name="place" class="form-control" value="" type="text">
                 @foreach(config('const.place') as $key => $score)
-                    @if ($artist->part === $key)
+                    @if ($artist->place === $key)
                     <option value="{{ $key }}" selected>{{ $score }}</option>
                     @else
                     <option value="{{ $key }}">{{ $score }}</option>
@@ -56,7 +56,7 @@
             </label>
             <select id="gender" name="gender" class="form-control" value="" type="text">
                 @foreach(config('const.gender') as $key => $score)
-                    @if ($artist->part === $key)
+                    @if ($artist->gender === $key)
                     <option value="{{ $key }}" selected>{{ $score }}</option>
                     @else
                     <option value="{{ $key }}">{{ $score }}</option>
