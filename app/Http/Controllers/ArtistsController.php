@@ -68,7 +68,7 @@ class ArtistsController extends Controller
         $user = User::find(Auth::user()->id );
         $user -> is_Artist = 1;
         $user -> save();
-        return redirect()->route('top');
+        return redirect()->route('artists.show',$user->id);
     }
 
     /**
@@ -146,7 +146,7 @@ class ArtistsController extends Controller
             'self_pr' => 'nullable',
         ]);
 
-        $artist = Artist::find($id);
+        $artist = Artist::where('user_id',Auth::user()->id)->first();
         $artist->fill($params)->save();
 
         return redirect()->route('artists.show',$id);
