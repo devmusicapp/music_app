@@ -16,9 +16,9 @@ class CreateArtistsTable extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->bigInteger('id',true)->unsigned()->unique();
             $table->string('name');
-            $table->bigInteger('part')->unsigned()->nullable();
-            $table->bigInteger('place')->unsigned()->nullable();
-            $table->bigInteger('gender')->unsigned()->nullable();
+            $table->bigInteger('part')->unsigned()->nullable()->default(0);
+            $table->bigInteger('place')->unsigned()->nullable()->default(0);
+            $table->bigInteger('gender')->unsigned()->nullable()->default(0);
             $table->bigInteger('age')->unsigned()->nullable();
             $table->string('youtube_url')->nullable();
             $table->string('favorite_musician')->nullable();
