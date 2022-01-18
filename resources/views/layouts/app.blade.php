@@ -62,6 +62,19 @@
                                     <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストプロフィール</a>
                                 </li>
                                 @endif
+                                @if(Auth::user()->is_Creator == 0 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.create') }}">クリエータ情報入力</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->is_Creator == 1 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.edit',Auth::user()->id) }}">クリエータ情報編集</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.show',Auth::user()->id) }}">クリエータプロフィール</a>
+                                </li>
+                                @endif
                             @endauth
                             @guest
                             <li class="nav-item">

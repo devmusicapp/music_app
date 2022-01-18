@@ -51,4 +51,6 @@ Route::get('/user', function () {
     return view('user.index');
 });
 
-Route::resource('artists', 'ArtistsController')->middleware(['auth']);
+Route::resource('artists', 'ArtistsController', ['only' => ['create', 'store', 'show','update','edit']])->middleware(['auth']);
+
+Route::resource('creators', 'CreatorsController',['only' => ['create', 'store', 'show','update','edit']])->middleware(['auth']);

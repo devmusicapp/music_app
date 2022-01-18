@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Artist;
+use App\Models\Creator;
 use App\Models\User;
 
-class ArtistsController extends Controller
+class CreatorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,14 +27,13 @@ class ArtistsController extends Controller
      */
     public function create()
     {
-        //もしartistsテーブルのuser idに現在のログインIDと一致するものがあれば、topにリダイレクト
-        $isArtist = Artist::where('user_id', '=', Auth::user()->id )->exists();
-        if($isArtist == true){
+        //もしcreatorsテーブルのuser idに現在のログインIDと一致するものがあれば、topにリダイレクト
+        $isCreator = Creator::where('user_id', '=', Auth::user()->id )->exists();
+        if($isCreator == true){
             return redirect()->route('top');
         }else{
-            return view('artists.create');
+            return view('creators.create');
         }
-        
     }
 
     /**
@@ -52,23 +51,20 @@ class ArtistsController extends Controller
 
         $params = $request->validate([
             'name' => 'required|string',
-            'part' => 'nullable',
-            'place' => 'nullable',
-            'gender' => 'nullable',
-            'age' => 'nullable|integer',
             'youtube_url' => 'nullable|string',
-            'favorite_musician' => 'nullable|string',
             'self_pr' => 'nullable',
+            'fee_1' => 'nullable',
             'user_id' => 'required|integer',
         ]);
 
 
-        $artist = Artist::create($params);
+        $creator = Creator::create($params);
         //user テーブルのisArtistをfalse→trueに更新する
         $user = User::find(Auth::user()->id );
-        $user -> is_Artist = 1;
+        $user -> is_Creator = 1;
         $user -> save();
-        return redirect()->route('artists.show',$user->id);
+        return redirect()->route('creators.show',$user->id);
+
     }
 
     /**
@@ -79,19 +75,23 @@ class ArtistsController extends Controller
      */
     public function show($id)
     {
-        $artist = Artist::where('user_id',$id)->first();
+        if(Creator::where('user_id',$id)->exists())
+        {
+            $creator = Creator::where('user_id',$id)->first();
 
-        if($this->isYoutubeURL($artist -> youtube_url ) == true){
-            $youtube_url = $this->convertYoutube($artist -> youtube_url);
-        }elseif($this->isYoutubeMobileURL($artist -> youtube_url ) == true){
-            $youtube_url = $this->convertMobileYoutube($artist -> youtube_url);
+            if($this->isYoutubeURL($creator -> youtube_url ) == true){
+                $youtube_url = $this->convertYoutube($creator -> youtube_url);
+            }elseif($this->isYoutubeMobileURL($creator -> youtube_url ) == true){
+                $youtube_url = $this->convertMobileYoutube($creator -> youtube_url);
+            }else{
+                $youtube_url = null;
+            }
         }else{
-            $youtube_url = null;
+            return redirect()->route('top');
         }
-        
-        //$artist -> youtube_url = $this->convertYoutube($artist -> youtube_url);
-        //$artist -> save();
-        return view('artists.show',['artist'=> $artist,'youtube_url'=> $youtube_url]);
+
+
+        return view('creators.show',['creator'=> $creator,'youtube_url'=> $youtube_url]);
     }
 
     /**
@@ -107,8 +107,8 @@ class ArtistsController extends Controller
             // 管理者管理　一覧画面へリダイレクト
             return redirect()->route('top');
         }
-        $artist = Artist::where('user_id',$id)->first();
-        return view('artists.edit', ['artist' => $artist]);
+        $creator = Creator::where('user_id',$id)->first();
+        return view('creators.edit', ['creator' => $creator]);
     }
 
     /**
@@ -120,7 +120,6 @@ class ArtistsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         if($this->isYoutubeURL($request->youtube_url) == 1){
             //$changed_url = $this->convertYoutube($request->youtube_url);
             $request->merge(['youtube_url' => $request->youtube_url]);
@@ -129,27 +128,21 @@ class ArtistsController extends Controller
         }else{
             $request->merge(['youtube_url' => null]);
         }
-        
-
-        //$request->merge(['youtube_url' => $this->isYoutubeURL($request->youtube_url)]);
-        //$changed_url = $this->convertYoutube($request->youtube_url);
-        //$request->merge(['youtube_url' => $changed_url]);        
-
+              
         $params = $request->validate([
             'name' => 'string|required',
-            'part' => 'nullable',
-            'place' => 'nullable',
-            'gender' => 'nullable',
-            'age' => 'nullable|integer',
             'youtube_url' => 'string|nullable',
-            'favorite_musician' => 'string|nullable',
+            'fee_1' => 'nullable',
+            'fee_2' => 'nullable',
+            'fee_3' => 'nullable',
             'self_pr' => 'nullable',
         ]);
 
-        $artist = Artist::where('user_id',Auth::user()->id)->first();
-        $artist->fill($params)->save();
+        $creator = Creator::where('user_id',Auth::user()->id)->first();
+        $creator->fill($params)->save();
 
-        return redirect()->route('artists.show',Auth::user()->id);
+        return redirect()->route('creators.show',Auth::user()->id);
+
     }
 
     /**
@@ -162,7 +155,6 @@ class ArtistsController extends Controller
     {
         //
     }
-
 
     private function CheckloginUser($id)
     {
@@ -206,13 +198,14 @@ class ArtistsController extends Controller
         return $return_ad;
         }
 
-        private function convertMobileYoutube($str, $width = 560, $height = 315) {
-            //先頭のアドレスを除外する
-            $str = str_replace("https://youtu.be/","",$str);
-        
-            //iframe用のアドレスに変換する
-            $return_ad = '<iframe width="'.$width.'" height="'.$height.'" src="https://www.youtube.com/embed/'.$str.'" frameborder="0" allowfullscreen></iframe>';
-        
-            return $return_ad;
-            }
+    private function convertMobileYoutube($str, $width = 560, $height = 315) {
+        //先頭のアドレスを除外する
+        $str = str_replace("https://youtu.be/","",$str);
+    
+        //iframe用のアドレスに変換する
+        $return_ad = '<iframe width="'.$width.'" height="'.$height.'" src="https://www.youtube.com/embed/'.$str.'" frameborder="0" allowfullscreen></iframe>';
+    
+        return $return_ad;
+        }
+
 }
