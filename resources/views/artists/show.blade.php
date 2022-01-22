@@ -28,15 +28,19 @@
               </tr>
               <tr>
                 <th scope="row">担当パート</th>
+                @if(isset($artist->part))
                 <td>{{ config('const.part')[$artist->part] }}</td>
+                @endif
               </tr>
               <tr>
                 <th scope="row">活動拠点</th>
+                @if(isset($artist->place))
                 <td colspan="2">{{ config('const.place')[$artist->place] }}</td>
+                @endif
               </tr>
               <tr>
                 <th scope="row">年齢/性別</th>
-                <td colspan="2">{{ $artist->age }}歳/{{ config('const.gender')[$artist->gender] }}</td>
+                <td colspan="2">{{ $artist->age }}歳/@if(isset($artist->gender)){{ config('const.gender')[$artist->gender] }}</td>@endif
               </tr> 
               <tr>
                 <th scope="row">好きなアーティスト</th>
