@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function artist()
+    {
+        return $this->hasOne(Artist::class);
+    }
+
+    public function creator()
+    {
+        return $this->hasOne(Creator::class);
+    }
 }
