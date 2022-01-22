@@ -48,6 +48,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('artists_posts.index') }}">アーティスト投稿一覧</a>
+                            </li>
                             @auth
                                 @if(Auth::user()->is_Artist == 0 )
                                 <li class="nav-item">
@@ -59,7 +62,7 @@
                                     <a class="nav-link" href="{{ route('artists.edit',Auth::user()->id) }}">アーティスト情報編集</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストプロフィール</a>
+                                    <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストメニュー</a>
                                 </li>
                                 @endif
                                 @if(Auth::user()->is_Creator == 0 )
@@ -72,7 +75,7 @@
                                     <a class="nav-link" href="{{ route('creators.edit',Auth::user()->id) }}">クリエータ情報編集</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('creators.show',Auth::user()->id) }}">クリエータプロフィール</a>
+                                    <a class="nav-link" href="{{ route('creators.show',Auth::user()->id) }}">クリエータメニュー</a>
                                 </li>
                                 @endif
                             @endauth

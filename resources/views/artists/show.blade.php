@@ -12,9 +12,9 @@
               <div class=" p-4  flex-column position-static">
                 @if(  $artist -> user_id == Auth::user()->id )
                   <a type="button" class="btn btn-primary" href="{{ route('artists.edit',$artist -> user_id) }}">編集する</a>
+                  <a type="button" class="btn btn-primary" href="{{ route('artists_posts.create',$artist -> user_id) }}">依頼を掲示板に投稿する</a>
                 @else
                 <button type="button" class="btn btn-primary">連絡する</button>
-                <button type="button" class="btn btn-primary">依頼する</button>
                 @endif
               </div>
             </div>

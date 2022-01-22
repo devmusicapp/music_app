@@ -51,6 +51,8 @@ Route::get('/user', function () {
     return view('user.index');
 });
 
-Route::resource('artists', 'ArtistsController', ['only' => ['create', 'store', 'show','update','edit']])->middleware(['auth']);
+Route::resource('artists', 'ArtistsController', ['only' => ['index','create', 'store', 'show','update','edit']])->middleware(['auth']);
+
+Route::resource('artists_posts', 'ArtistsPostsController',['only' => ['create', 'store', 'index','show','update','edit']])->middleware(['auth']);
 
 Route::resource('creators', 'CreatorsController',['only' => ['create', 'store', 'show','update','edit']])->middleware(['auth']);
