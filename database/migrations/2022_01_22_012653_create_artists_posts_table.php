@@ -17,8 +17,8 @@ class CreateArtistsPostsTable extends Migration
             $table->bigInteger('id',true)->unsigned()->unique();
             $table->string('title');
             $table->text('message')->nullable();
-            $table->bigInteger('artists_id')->unsigned();
-            $table->foreign('artists_id')->references('id')->on('artists');
+            $table->bigInteger('artist_id')->unsigned();
+            $table->foreign('artist_id')->references('id')->on('artists');
             $table->timestamp('updated_at')->useCurrent()->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
         });

@@ -15,7 +15,7 @@ class ArtistsPost extends Model
 
     protected $fillable = [
         'title',
-        'artists_id',
+        'artist_id',
         'message',
     ];
 

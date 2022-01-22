@@ -42,7 +42,7 @@
                             </div>
                         @endif
                     </div>
-                    <input type="hidden" name="artists_id" value="{{ $artist->id }}">
+                    <input type="hidden" name="artist_id" value="{{ $artist->id }}">
 
                     <div class="mt-5">
                         <button type="submit" class="btn btn-primary">

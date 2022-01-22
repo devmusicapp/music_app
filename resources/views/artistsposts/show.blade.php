@@ -14,10 +14,10 @@
             </p>
         </div>
         <div class="mt-4">
-            <a class="btn btn-secondary" href="{{ route('artists.show',$post->artists_id) }}">
+            <a class="btn btn-secondary" href="{{ route('artists.show',$post->artist_id) }}">
                 投稿者のプロフィール
             </a>
-            <a class="btn btn-secondary" href="{{ route('artists.show',$post->artists_id) }}">
+            <a class="btn btn-secondary" href="{{ route('artists.show',$post->artist_id) }}">
                 投稿者へ連絡
             </a>
             <a class="btn btn-secondary" href="{{ route('artists_posts.index') }}">

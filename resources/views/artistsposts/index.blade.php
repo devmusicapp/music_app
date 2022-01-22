@@ -22,7 +22,7 @@
                 {{$post->message}}
             </div>
             <div class="card-footer">
-                タイトル: {{$post->title}} <br>
+                投稿者:{{ $post-> artist->name}}
                 投稿日時: {{$post->created_at}}
             </div>
         </div>

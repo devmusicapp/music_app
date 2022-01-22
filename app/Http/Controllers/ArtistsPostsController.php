@@ -19,7 +19,7 @@ class ArtistsPostsController extends Controller
      */
     public function index()
     {
-        $posts = ArtistsPost::orderBy('created_at', 'desc')->get();
+        $posts = ArtistsPost::with('artist')->orderBy('created_at', 'desc')->get();
         return view('artistsposts.index',['posts'=>$posts]);
     }
 
@@ -52,7 +52,7 @@ class ArtistsPostsController extends Controller
         $params = $request->validate([
             'title' => 'required|string',
             'message' => 'required|string',
-            'artists_id' => 'nullable',
+            'artist_id' => 'nullable',
         ]);
 
         $artist = ArtistsPost::create($params);
