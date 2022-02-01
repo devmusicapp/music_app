@@ -153,6 +153,8 @@
         
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                <div>example-footer: <example-footer></example-footer></div>
+                <div>layout-footer: <layout-footer></layout-footer></div>
                 © 2021 Copyright:
                 <a class="text-dark" href="https://mdbootstrap.com/">aaaaa</a>
             </div>

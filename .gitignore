@@ -16,3 +16,6 @@ yarn-error.log
 
 /licenses
 .buildcomplete
+
+docker-compose.yml
+.devcontainer
