@@ -18,4 +18,5 @@ yarn-error.log
 .buildcomplete
 
 docker-compose.yml
+.dockerignore
 .devcontainer
