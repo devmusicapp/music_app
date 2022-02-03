@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      temp: 'layoutFooter--2'
+      temp: 'layoutFooter--1'
     }
   }
 }
@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 $blue: #2367a0;
-$body-bg: #f24678;
+// $body-bg: #f27846;
 p {
   color: $body-bg;
 }
