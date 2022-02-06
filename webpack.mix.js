@@ -14,5 +14,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .extract(['vue'])
     .sass('resources/sass/app.scss', 'public/css')
-    .version();
+    .version()
+    .sourceMaps(true, 'inline-source-map');
