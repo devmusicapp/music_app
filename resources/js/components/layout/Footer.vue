@@ -1,30 +1,20 @@
 <template>
   <footer class="footer">
-    <!-- Grid container -->
-    <div class="container">
-        <!--Grid row-->
-        <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">検索</h5>
+    <div class="container is-widescreen">
+      <div class="menu-list is-flex is-justify-content-flex-end">
+        <div class="">
+          <a class="">利用規約</a>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">決済テスト</h5>
+        <div class="">
+          <a class="">プライバシーポリシー</a>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-0">運営者概要</h5>
+        <div class="">
+          <a class="">お問い合わせ</a>
         </div>
-        <!--Grid column-->
-        </div>
-        <!--Grid row-->
+      </div>
     </div>
-    <!-- Grid container -->
 
 
     <p class="copyright has-text-centered is-size-7">
