@@ -126,40 +126,8 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="bg-light text-center text-lg-start">
-            <!-- Grid container -->
-            <div class="container p-4">
-                <!--Grid row-->
-                <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">検索</h5>
-                </div>
-                <!--Grid column-->
-        
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">決済テスト</h5>
-                </div>
-                <!--Grid column-->
-        
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-0">運営者概要</h5>
-                </div>
-                <!--Grid column-->
-                </div>
-                <!--Grid row-->
-            </div>
-            <!-- Grid container -->
-        
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div>example-footer: <example-footer></example-footer></div>
-                <div>layout-footer: <layout-footer></layout-footer></div>
-            </div>
-            <!-- Copyright -->
-        </footer>
+
+        <layout-footer></layout-footer>
     
     </div>
 </body>
