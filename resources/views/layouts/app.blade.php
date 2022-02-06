@@ -13,7 +13,6 @@
     <title>ende</title>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -21,7 +20,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     </head>
@@ -157,8 +155,6 @@
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 <div>example-footer: <example-footer></example-footer></div>
                 <div>layout-footer: <layout-footer></layout-footer></div>
-                © 2021 Copyright:
-                <a class="text-dark" href="https://mdbootstrap.com/">aaaaa</a>
             </div>
             <!-- Copyright -->
         </footer>

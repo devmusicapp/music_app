@@ -76,13 +76,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      temp: 'layoutFooter--1'
-    };
-  }
-});
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -117,9 +116,6 @@ files.keys().map(function (key) {
   });
   Vue.component(dirs.join(''), files(key)["default"]);
 }); // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('example-footer', require('./components/ExampleFooter.vue').default);
-// Vue.component('layout-footer', require('./components/layout/Footer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -254,6 +250,19 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -596,19 +605,6 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -944,9 +940,28 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("this is Vue Component. jsdata: " + _vm._s(_vm.temp))])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "footer" }, [
+      _c("p", { staticClass: "copyright" }, [
+        _vm._v("\n    © 2021 Copyright:\n    "),
+        _c(
+          "a",
+          {
+            staticClass: "text-dark",
+            attrs: { href: "https://mdbootstrap.com/" },
+          },
+          [_vm._v("aaaaa")]
+        ),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
