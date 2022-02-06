@@ -16,6 +16,6 @@ export default {
 $blue: #2367a0;
 // $body-bg: #f27846;
 p {
-  color: $body-bg;
+  color: $blue;
 }
 </style>

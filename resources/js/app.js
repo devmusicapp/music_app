@@ -2,9 +2,9 @@
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
- */
 
-require('./bootstrap');
+    require('./bootstrap');
+ */
 
 window.Vue = require('vue').default;
 
@@ -16,12 +16,24 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => {
+        let dirs = key.split(/.vue$|\//).slice(2, -1)
+        dirs.forEach((el, i) => {
+            dirs[i] = el.charAt(0).toUpperCase() + el.slice(1)
+        });
+        Vue.component(
+            dirs.join(''), 
+            files(key).default
+        )
+    }
+)
+
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('example-footer', require('./components/ExampleFooter.vue').default);
-Vue.component('layout-footer', require('./components/layout/Footer.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-footer', require('./components/ExampleFooter.vue').default);
+// Vue.component('layout-footer', require('./components/layout/Footer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
