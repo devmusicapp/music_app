@@ -31,6 +31,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "sass-resources-loader": "^2.2.4"
     }
 }
