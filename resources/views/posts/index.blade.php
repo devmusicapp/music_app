@@ -9,8 +9,14 @@
     <h2>各サービスへのリンク</h2>
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('artists_posts.index') }}">アーティスト投稿一覧</a>
+        <li class="navbar-item">
+          <a href="{{ route('cash_test1') }}">決済テスト</a>
+        </li>
+        <li class="navbar-item">
+          <a href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
+        </li>
+        <li class="navbar-item">
+          <a href="{{ route('artists_posts.index') }}">アーティスト投稿一覧</a>
         </li>
         @auth
             @if(Auth::user()->is_Artist == 0 )

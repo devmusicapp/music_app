@@ -29,114 +29,128 @@
 
 <body>
   <div id="app">
-    <layout-header>
-      <template #home>
-        <a class="navbar-item" href="{{ url('/') }}">
-          ende
-        </a>
-      </template>
-    </layout-header>
+    <nav class="navbar global-header">
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-      <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          ende
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <layout-global-header>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('recruiting.index')}}">検索</a>
-            </li>
+        <template #home>
+          <div class="navbar-item">
+            <a href="{{ url('/') }}">
+              LOGO
+            </a>
+          </div>
+        </template>
 
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('cash_test1') }}">決済テスト</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('artists_posts.index') }}">アーティスト投稿一覧</a>
-            </li>
-            @auth
+        <template #search>
+          <div class="navbar-item">
+            <div class="field has-addons">
+              <div class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="〇〇〇〇">
+                <span class="icon is-right">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+              <div class="control">
+                <a class="button" href="{{route('recruiting.index')}}">検索</a>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template #user>
+          @guest
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <div class="control">
+                <a class="button" href="{{ route('register') }}">登録</a>
+              </div>
+              <div class="control">
+                <a class="button" href="{{ route('login') }}">ログイン</a>
+              </div>
+            </div>
+          </div>
+          @endguest
+
+          @auth
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link is-arrowless">
+              {{ Auth::user()->name }}
+            </div>
+
+            <ul class="navbar-dropdown is-boxed is-right">
             @if(Auth::user()->is_Artist == 0 )
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('artists.create') }}">アーティスト情報入力</a>
-            </li>
+              <li class="navbar-item">
+                <a href="{{ route('artists.create') }}">アーティスト情報入力</a>
+              </li>
             @endif
             @if(Auth::user()->is_Artist == 1 )
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('artists.edit',Auth::user()->id) }}">アーティスト情報編集</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストメニュー</a>
-            </li>
+              <li class="navbar-item">
+                <a href="{{ route('artists.edit',Auth::user()->id) }}">アーティスト情報編集</a>
+              </li>
+              <li class="navbar-item">
+                <a href="{{ route('artists.show',Auth::user()->id) }}">アーティストメニュー</a>
+              </li>
             @endif
             @if(Auth::user()->is_Creator == 0 )
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('creators.create') }}">クリエータ情報入力</a>
-            </li>
+              <li class="navbar-item">
+                <a href="{{ route('creators.create') }}">クリエータ情報入力</a>
+              </li>
             @endif
             @if(Auth::user()->is_Creator == 1 )
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('creators.edit',Auth::user()->id) }}">クリエータ情報編集</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('creators.show',Auth::user()->id) }}">クリエータメニュー</a>
-            </li>
+              <li class="navbar-item">
+                <a href="{{ route('creators.edit',Auth::user()->id) }}">クリエータ情報編集</a>
+              </li>
+              <li class="navbar-item">
+                <a href="{{ route('creators.show',Auth::user()->id) }}">クリエータメニュー</a>
+              </li>
             @endif
-            @endauth
-            @guest
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">登録</a>
-            </li>
-            @endguest
-          </ul>
-
-          <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ms-auto">
-            <!-- Authentication Links -->
-            @guest
-            @if (Route::has('login'))
-            @endif
-
-            @if (Route::has('register'))
-            @endif
-            @else
-            <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
-              </a>
-
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+              <li class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                 </a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
                 </form>
-              </div>
-            </li>
-            @endguest
-          </ul>
+              </li>            
+            </ul>
+            @endauth
+          </div>
+
+        </template>
+
+
+      </layout-global-header>
+
+      <nav class="navbar-menu container is-widescreen global-navigation">
+        <div class="navbar-item">
+          <a href="{{ route('artists_posts.index') }}">Collabolation</a>
         </div>
-      </div>
+        <div class="navbar-item">
+          <a href="">Mathing</a>
+        </div>
+        <div class="navbar-item">
+          <a href="">Ranking</a>
+        </div>
+        <div class="navbar-item">
+          <a href="">Talk Room</a>
+        </div>
+      </nav>
+            @guest
+              @if (Route::has('login'))
+              @endif
+
+              @if (Route::has('register'))
+              @endif
+            @else
+            @endguest
     </nav>
-    <main class="py-4">
+
+    <main class="container">
       @yield('content')
     </main>
 
-    <layout-footer></layout-footer>
+    <layout-global-footer></layout-global-footer>
   </div>
 </body>
 
