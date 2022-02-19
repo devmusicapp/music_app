@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MusicApp</title>
+        <title>ende</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>MusicApp</title>
+    <title>ende</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -28,7 +28,7 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        ende
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -55,6 +55,40 @@
                                 <a class="nav-link" href="{{ route('cash_test1') }}">決済テスト</a>
 >>>>>>> 52c1a1df3e1b89d6da18c5584d98b48d6c26e0ef
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('artists_posts.index') }}">アーティスト投稿一覧</a>
+                            </li>
+                            @auth
+                                @if(Auth::user()->is_Artist == 0 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.create') }}">アーティスト情報入力</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->is_Artist == 1 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.edit',Auth::user()->id) }}">アーティスト情報編集</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('artists.show',Auth::user()->id) }}">アーティストメニュー</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->is_Creator == 0 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.create') }}">クリエータ情報入力</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->is_Creator == 1 )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.edit',Auth::user()->id) }}">クリエータ情報編集</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('creators.show',Auth::user()->id) }}">クリエータメニュー</a>
+                                </li>
+                                @endif
+                            @endauth
                             @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">ログイン</a>
@@ -129,6 +163,8 @@
         
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                <div>example-footer: <example-footer></example-footer></div>
+                <div>layout-footer: <layout-footer></layout-footer></div>
                 © 2021 Copyright:
                 <a class="text-dark" href="https://mdbootstrap.com/">aaaaa</a>
             </div>

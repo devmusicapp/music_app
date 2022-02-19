@@ -40,3 +40,19 @@ Route::prefix('user')->middleware(['auth'])->group(function() {
     Route::post('ajax/subscription/update_card', 'User\Ajax\SubscriptionController@update_card');
 
 });
+
+
+Route::get('/recruiting', function () {
+    return view('recruiting.index');
+})->name('recruiting.index');
+
+//ユーザ画面サンプル
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+Route::resource('artists', 'ArtistsController', ['only' => ['index','create', 'store', 'show','update','edit']])->middleware(['auth']);
+
+Route::resource('artists_posts', 'ArtistsPostsController',['only' => ['create', 'store', 'index','show','update','edit']])->middleware(['auth']);
+
+Route::resource('creators', 'CreatorsController',['only' => ['create', 'store', 'show','update','edit']])->middleware(['auth']);
