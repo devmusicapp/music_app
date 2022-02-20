@@ -41,20 +41,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('recruiting.index')}}">検索</a>
                             </li>                            
-
-                            <li class="nav-item">
-<<<<<<< HEAD
-                                <a class="nav-link" href="{{route('member.index')}}">メンバーを探す</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">サポート</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ログイン</a>
-=======
-                                <a class="nav-link" href="{{ route('cash_test1') }}">決済テスト</a>
->>>>>>> 52c1a1df3e1b89d6da18c5584d98b48d6c26e0ef
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://buy.stripe.com/test_8wMeV1cAJ5EO94kaEE">決済テスト3</a>
                             </li>
